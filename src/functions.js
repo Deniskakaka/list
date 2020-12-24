@@ -63,7 +63,7 @@ export function render(string, element, func, list, play, show) {
                     <div className='preview-wrapper-content'>
                         <div className='preview-content'>
                             <div className='preview-content__avatar'
-                                style={{'backgroundImage': `url(list/src/img/${element.image}.svg)`}}/>
+                                style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
                             <span>{element.name}</span>
                             <div onClick={() => func(list, element)}>{element.favourite 
                                     ? <img 
@@ -86,7 +86,7 @@ export function render(string, element, func, list, play, show) {
         return <li className='table' key={Math.random()}>
                         <div 
                             className='table-content__avatar' 
-                            style={{'backgroundImage': `url(list/src/img/${element.image}.svg)`}}/>
+                            style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
                         <span className='table-content__name'>{element.name}</span>
                         <span>{element.age + ' age'}</span>
                         <span>{element.phone}</span>
