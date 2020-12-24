@@ -64,7 +64,7 @@ export function render(string, element, func, list, play, show) {
                         <div className='preview-content'>
                             <div 
                                 className='preview-content__avatar' 
-                                style={{'backgroundImage': `url(../img/${element.image}.svg)`}}/>
+                                style={{'backgroundImage': `url(./src/img/${element.image}.svg)`}}/>
                             <span>{element.name}</span>
                             <div onClick={() => func(list, element)}>{element.favourite 
                                     ? <img 
