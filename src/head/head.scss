@@ -1,0 +1,82 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    margin-bottom: 40px;
+    max-width: 1440px;
+    margin: auto;
+
+    @media screen and (max-width: 1070px) {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.header-filter {
+    font-size: 20px;
+
+    &__id,
+    &__age,
+    &__increase,
+    &__decrease,
+    &__preview,
+    &__table,
+    &__name {
+        background-color: rgb( 43, 153, 91 );
+        border: 1px solid rgb( 33, 126, 74 );
+        color: #FFFFFF;
+        text-align: center;
+        padding: 10px 25px;
+        border-radius: 5%;
+        box-shadow: 2px 1px 2px #666,2px 5px 0px #444,0px 6px 6px rgba(0, 0, 0, .6);
+        -webkit-transition: ease .15s all;
+        -moz-transition: ease .15s all;
+        -o-transition: ease .15s all;
+        transition: ease .15s all;
+        -webkit-animation: none;
+        -moz-animation: none;
+        -o-animation: none;
+        animation: none;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+
+        @media screen and (max-width: 1070px) {
+            display: block;
+            min-width: 90vw;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 0;
+        }
+
+        &:active {
+            box-shadow: 1px 1px 0px #666,1px 2px 0px #444,0px 2px 2px rgba(0, 0, 0, .9);
+            -webkit-transform: translateY(3px);
+            -moz-transform: translateY(3px);
+            -o-transform: translateY(3px);
+            transform: translateY(3px);
+            -webkit-animation: none;
+            -moz-animation: none;
+            -o-animation: none;
+            animation: none;
+        }
+    }
+}
+
+.text {
+    padding: 10px 50px;
+    border: 1px solid grey;
+    border-radius: 20px;
+    outline: none;
+    background-color: #e9eff6;
+    box-shadow: 1px 1px 0px #666,1px 2px 0px #444,0px 2px 2px rgba(0, 0, 0, .9);
+}
+
+.name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
