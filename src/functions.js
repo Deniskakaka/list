@@ -62,9 +62,8 @@ export function render(string, element, func, list, play, show) {
         return <li className={element.video ? 'preview play' : 'preview'} key={Math.random()}>
                     <div className='preview-wrapper-content'>
                         <div className='preview-content'>
-                            <div 
-                                className='preview-content__avatar' 
-                                style={{'backgroundImage': `url(../img/${element.image}.svg)`}}/>
+                            <div className='preview-content__avatar'
+                                style={{'backgroundImage': `url(list/src/img/${element.image}.svg)`}}/>
                             <span>{element.name}</span>
                             <div onClick={() => func(list, element)}>{element.favourite 
                                     ? <img 
@@ -81,22 +80,13 @@ export function render(string, element, func, list, play, show) {
                             <p>{element.phrase}</p>
                         </div>
                     </div>
-                        {element.video 
-                            ? <video
-                                onClick={() => play(event)}
-                                className='video' 
-                                muted="muted" 
-                                loop 
-                                autoPlay={show}
-                                src={`video/${element.video}.mp4`}></video> 
-                            : ''}
-                        </li>
+                </li>
     }
     if(string.includes('table')) {
         return <li className='table' key={Math.random()}>
                         <div 
                             className='table-content__avatar' 
-                            style={{'backgroundImage': `url(img/${element.image}.svg)`}}/>
+                            style={{'backgroundImage': `url(list/src/img/${element.image}.svg)`}}/>
                         <span className='table-content__name'>{element.name}</span>
                         <span>{element.age + ' age'}</span>
                         <span>{element.phone}</span>
