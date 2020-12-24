@@ -85,7 +85,6 @@ export function render(string, element, func, list) {
                                             className='video' 
                                             src={`/src/video/${element.video}.mp4`} 
                                             controls 
-                                            autoPlay={true} 
                                             loop muted='muted'>
                                         </video>
                         : ''}

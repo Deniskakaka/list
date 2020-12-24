@@ -1,7 +1,8 @@
-import { LIST_PEOPLE } from './main.actions';
+import { LIST_PEOPLE, LOADER } from './main.actions';
 
 const initialState = {
     listPeople: [],
+    loader: true
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -10,6 +11,12 @@ const mainReducer = (state = initialState, action) => {
             return {
                 ...state,
                 listPeople: action.payload.array
+            }
+        }
+        case LOADER: {
+            return {
+                ...state,
+                loader: action.payload.boolean
             }
         }
         default :

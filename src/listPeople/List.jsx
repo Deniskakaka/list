@@ -22,7 +22,8 @@ class Preview extends React.Component {
             array.forEach(el => {
                 let top = el.getBoundingClientRect().top
                 let bottom = el.getBoundingClientRect().bottom
-                if (top >= 0 && bottom <= window.innerHeight) el.play()
+                console.log(Math.floor(top), Math.floor(window.innerHeight / 2))
+                if (Math.floor(top) <= 800 && Math.floor(top) > 0) el.play()
                 else el.pause()
             })
         });
@@ -37,23 +38,37 @@ class Preview extends React.Component {
     }
 
     render() {
+        console.log(this.props.loader)
         return (
-            <ul className="list">
-                {filterList(
-                    this.props.increase,
-                    this.props.decrease,
-                    this.props.id,
-                    this.props.age,
-                    this.props.list,
-                    this.props.location).map((element, index) =>
-                        render(
-                            this.props.location.pathname,
-                            element,
-                            this.choosFavorite,
-                            this.props.list,
-                            this.props.show)
-                    )}
-            </ul>
+            <main className="main">
+                {this.props.loader
+                    ? <div className="lds-roller">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div> : ''}
+                <ul className="list">
+                    {filterList(
+                        this.props.increase,
+                        this.props.decrease,
+                        this.props.id,
+                        this.props.age,
+                        this.props.list,
+                        this.props.location).map((element, index) =>
+                            render(
+                                this.props.location.pathname,
+                                element,
+                                this.choosFavorite,
+                                this.props.list,
+                                this.props.show)
+                        )}
+                </ul>
+            </main>
         )
     }
 };
@@ -61,7 +76,7 @@ class Preview extends React.Component {
 const mapState = state => {
     return {
         list: state.main.listPeople,
-        show: state.main.show
+        loader: state.main.loader
     }
 }
 
