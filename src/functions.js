@@ -1,5 +1,4 @@
 import React from 'react';
-
 export let data = require('./data.json');
 
 export function filterList(increase, decrease, id, age, list, location) {
@@ -57,7 +56,7 @@ export function replaceStringForTable(string) {
     if (!string.includes('preview') && !string.includes('table')) return string + 'table'
 }
 
-export function render(string, element, func, list, play, show) {
+export function render(string, element, func, list) {
     if (string.includes('preview')) {
         return <li className={element.video ? 'preview play' : 'preview'} key={Math.random()}>
                     <div className='preview-wrapper-content'>
@@ -80,24 +79,32 @@ export function render(string, element, func, list, play, show) {
                             <p>{element.phrase}</p>
                         </div>
                     </div>
+                    {element.video ? <video 
+                                        className='video' 
+                                        src={`/src/video/${element.video}.mp4`} 
+                                        controls 
+                                        autoPlay={true} 
+                                        loop muted='muted'>    
+                                      </video>
+                    : ''}
                 </li>
     }
     if(string.includes('table')) {
-        return <li className='table' key={Math.random()}>
-                        <div 
-                            className='table-content__avatar' 
-                            style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
-                        <span className='table-content__name'>{element.name}</span>
-                        <span>{element.age + ' age'}</span>
-                        <span>{element.phone}</span>
-                        <div onClick={() => func(list, element)}>{element.favourite 
-                            ? <img 
-                                    className='preview-content__star' 
-                                    src="https://img.icons8.com/office/40/000000/filled-star--v1.png"/> 
-                            : <img 
-                                    className='preview-content__star' 
-                                    src="https://img.icons8.com/ultraviolet/40/000000/filled-star--v1.png"/>}
-                        </div>
-                    </li>
+        return  <li className='table' key={Math.random()}>
+                    <div 
+                        className='table-content__avatar' 
+                        style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
+                    <span className='table-content__name'>{element.name}</span>
+                    <span>{element.age + ' age'}</span>
+                    <span>{element.phone}</span>
+                    <div onClick={() => func(list, element)}>{element.favourite 
+                        ? <img 
+                            className='preview-content__star' 
+                            src="https://img.icons8.com/office/40/000000/filled-star--v1.png"/> 
+                        : <img 
+                            className='preview-content__star' 
+                            src="https://img.icons8.com/ultraviolet/40/000000/filled-star--v1.png"/>}
+                    </div>
+                </li>
     }
 }

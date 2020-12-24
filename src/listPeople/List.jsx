@@ -10,11 +10,22 @@ class Preview extends React.Component {
             chooseFavourite: false,
         }
         this.choosFavorite = this.choosFavorite.bind(this);
-        this.play = this.play.bind(this);
     }
 
     componentDidMount() {
         this.props.get(data)
+    }
+
+    componentDidUpdate() {
+        document.addEventListener('scroll', () => {
+            let array = document.querySelectorAll('.video');
+            array.forEach(el => {
+                let top = el.getBoundingClientRect().top
+                let bottom = el.getBoundingClientRect().bottom
+                if (top >= 0 && bottom <= window.innerHeight) el.play()
+                else el.pause()
+            })
+        });
     }
 
     choosFavorite = (list, element) => {
@@ -23,10 +34,6 @@ class Preview extends React.Component {
         });
         this.props.get(list);
         this.setState({ chooseFavourite: !this.state.choose });
-    }
-
-    play(event) {
-
     }
 
     render() {
@@ -44,7 +51,6 @@ class Preview extends React.Component {
                             element,
                             this.choosFavorite,
                             this.props.list,
-                            this.play,
                             this.props.show)
                     )}
             </ul>
