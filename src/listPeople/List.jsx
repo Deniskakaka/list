@@ -22,7 +22,6 @@ class Preview extends React.Component {
             array.forEach(el => {
                 let top = el.getBoundingClientRect().top
                 let bottom = el.getBoundingClientRect().bottom
-                console.log(Math.floor(top), Math.floor(window.innerHeight / 2))
                 if (Math.floor(top) <= 800 && Math.floor(top) > 0) el.play()
                 else el.pause()
             })
