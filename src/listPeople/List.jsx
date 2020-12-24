@@ -21,7 +21,6 @@ class Preview extends React.Component {
             let array = document.querySelectorAll('.video');
             array.forEach(el => {
                 let top = el.getBoundingClientRect().top
-                let bottom = el.getBoundingClientRect().bottom
                 if (Math.floor(top) <= 800 && Math.floor(top) > 0) el.play()
                 else el.pause()
             })
