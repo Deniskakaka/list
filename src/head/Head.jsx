@@ -13,7 +13,7 @@ class Head extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            text: ''
+            text: '',
         }
         this.onChange = this.onChange.bind(this)
     }
@@ -43,6 +43,17 @@ class Head extends React.Component {
         this.setState({ text: event.target.value })
     }
 
+    onChangeLanguages() {
+        if (this.props.english) {
+            this.props.switchEnglish(false)
+            this.props.switchRussian(true)
+        }
+        if (!this.props.english) {
+            this.props.switchEnglish(true)
+            this.props.switchRussian(false)
+        }
+    }
+
     render() {
         return (
             <header className='header'>
@@ -60,7 +71,7 @@ class Head extends React.Component {
                             pathname: `${replaceStringForAge(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchAge()}>AGE</Link>
+                        onClick={() => this.switchAge()}>{this.props.english ? 'AGE' : 'ГОДА'}</Link>
                 </div>
                 <div className='header-filter'>
                     <Link
@@ -69,14 +80,14 @@ class Head extends React.Component {
                             pathname: `${replaceStringForIncrease(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchIncrease()}>Increase</Link>
+                        onClick={() => this.switchIncrease()}>{this.props.english ? 'Increase' : 'ПО ВОЗРОСТАНИЮ'}</Link>
                     <Link
                         className='header-filter__decrease'
                         to={{
                             pathname: `${replaceStringForDecrease(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchDecrease()}>Decrease</Link>
+                        onClick={() => this.switchDecrease()}>{this.props.english ? 'Decrease' : 'ПО УМЕНШЕНИЮ'}</Link>
                 </div>
                 <div className='header-filter'>
                     <Link
@@ -84,25 +95,31 @@ class Head extends React.Component {
                         to={{
                             pathname: `${replaceStringForPreview(location.pathname)}`,
                             search: this.state.text
-                        }}>preview</Link>
+                        }}>{this.props.english ? 'preview' : 'ПРОСМОТР'}</Link>
                     <Link
                         className='header-filter__table'
                         to={{
                             pathname: `${replaceStringForTable(location.pathname)}`,
                             search: this.state.text
-                        }}>table</Link>
+                        }}>{this.props.english ? 'table' : 'ТАБЛИЦА'}</Link>
                 </div>
                 <div className='header-filter name'>
                     <input
                         className='text'
                         type='text'
-                        placeholder='Name'
+                        placeholder={this.props.english ? 'Name' : 'Имя'}
                         value={this.state.text} onChange={() => this.onChange(event)}></input>
                     <Link className='header-filter__name'
                         to={{
                             pathname: location.pathname,
                             search: this.state.text
-                        }}>Search</Link>
+                        }}>{this.props.english ? 'Search' : 'ПОИСК'}</Link>
+                </div>
+                <div className='switch-language'>
+                    <input type='checkbox' className='russian' checked={this.props.russian} onChange={() => this.onChangeLanguages()} />
+                    <label>{this.props.english ? 'Russian' : 'РУССКИЙ'}</label>
+                    <input type='checkbox' className='english' checked={this.props.english} onChange={() => this.onChangeLanguages()} />
+                    <label>{this.props.english ? 'English' : 'АНГЛИЙСКИЙ'}</label>
                 </div>
             </header>
         )

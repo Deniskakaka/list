@@ -11,6 +11,8 @@ function App() {
     const [age, setAge] = useState(useLocation().pathname.includes('age') ? true : false);
     const [increase, setIncrease] = useState(useLocation().pathname.includes('Increase') ? true : false);
     const [decrease, setDecrease] = useState(useLocation().pathname.includes('Decrease') ? true : false);
+    const [russian, setRussian] = useState(false);
+    const [english, setEnglish] = useState(true)
     let location = useLocation();
 
     return (
@@ -21,7 +23,11 @@ function App() {
                 setId={setId}
                 setIncrease={setIncrease}
                 setDecrease={setDecrease}
-                setAge={setAge} />} />
+                setAge={setAge}
+                english={english}
+                russian={russian}
+                switchRussian={setRussian}
+                switchEnglish={setEnglish} />} />
             <Switch>
                 <Route path={location.pathname}
                     render={() => <List id={id} age={age} increase={increase} decrease={decrease} location={location} />} />

@@ -1,4 +1,5 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
 export let data = require('./data.json');
 
 export function filterList(increase, decrease, id, age, list, location) {
@@ -58,53 +59,57 @@ export function replaceStringForTable(string) {
 
 export function render(string, element, func, list) {
     if (string.includes('preview')) {
-        return <li className={element.video ? 'preview play' : 'preview'} key={Math.random()}>
-                    <div className='preview-wrapper-content'>
-                        <div className='preview-content'>
-                            <div className='preview-content__avatar'
-                                style={{'backgroundImage': `url(../../src/img/${element.image}.svg)`}}/>
-                            <span>{element.name}</span>
-                            <div onClick={() => func(list, element)}>{element.favourite 
+        return  <Fade bottom key={Math.random()}>
+                    <li className={element.video ? 'preview play' : 'preview'}>
+                        <div className='preview-wrapper-content'>
+                            <div className='preview-content'>
+                                <div className='preview-content__avatar'
+                                    style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
+                                <span>{element.name}</span>
+                                <div onClick={() => func(list, element)}>{element.favourite 
                                     ? <img 
                                         className='preview-content__star' 
                                         src="https://img.icons8.com/office/40/000000/filled-star--v1.png"/> 
                                     : <img 
                                         className='preview-content__star' 
                                         src="https://img.icons8.com/ultraviolet/40/000000/filled-star--v1.png"/>}
+                                </div>
+                            </div>
+                            <div className='preview-content bottom'>
+                                <span>{element.age + ' age'}</span>
+                                <span>{element.phone}</span>
+                                <p>{element.phrase}</p>
                             </div>
                         </div>
-                        <div className='preview-content bottom'>
-                            <span>{element.age + ' age'}</span>
-                            <span>{element.phone}</span>
-                            <p>{element.phrase}</p>
-                        </div>
-                    </div>
-                    {element.video ? <video 
-                                        className='video' 
-                                        src={`/src/video/${element.video}.mp4`} 
-                                        controls 
-                                        autoPlay={true} 
-                                        loop muted='muted'>    
-                                      </video>
-                    : ''}
-                </li>
+                        {element.video ? <video 
+                                            className='video' 
+                                            src={`/src/video/${element.video}.mp4`} 
+                                            controls 
+                                            autoPlay={true} 
+                                            loop muted='muted'>
+                                        </video>
+                        : ''}
+                    </li>
+                </Fade>
     }
     if(string.includes('table')) {
-        return  <li className='table' key={Math.random()}>
-                    <div 
-                        className='table-content__avatar' 
-                        style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
-                    <span className='table-content__name'>{element.name}</span>
-                    <span>{element.age + ' age'}</span>
-                    <span>{element.phone}</span>
-                    <div onClick={() => func(list, element)}>{element.favourite 
-                        ? <img 
-                            className='preview-content__star' 
-                            src="https://img.icons8.com/office/40/000000/filled-star--v1.png"/> 
-                        : <img 
-                            className='preview-content__star' 
-                            src="https://img.icons8.com/ultraviolet/40/000000/filled-star--v1.png"/>}
-                    </div>
-                </li>
+        return  <Fade right key={Math.random()}>
+                    <li className='table' key={Math.random()}>
+                        <div 
+                            className='table-content__avatar' 
+                            style={{'backgroundImage': `url(/src/img/${element.image}.svg)`}}/>
+                            <span className='table-content__name'>{element.name}</span>
+                            <span>{element.age + ' age'}</span>
+                            <span>{element.phone}</span>
+                            <div onClick={() => func(list, element)}>{element.favourite 
+                                ? <img 
+                                    className='preview-content__star' 
+                                    src="https://img.icons8.com/office/40/000000/filled-star--v1.png"/> 
+                                : <img 
+                                    className='preview-content__star' 
+                                    src="https://img.icons8.com/ultraviolet/40/000000/filled-star--v1.png"/>}
+                        </div>
+                    </li>
+                </Fade>
     }
 }

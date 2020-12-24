@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getListPeople, video } from '../redux/main.actions';
+import { getListPeople } from '../redux/main.actions';
 import { data, filterList, render } from '../functions';
-let show = false
+
 class Preview extends React.Component {
     constructor(props) {
         super(props)
@@ -67,7 +67,6 @@ const mapState = state => {
 
 const mapDispatch = {
     get: getListPeople,
-    playVideo: video
 }
 
 export default connect(mapState, mapDispatch)(Preview);
