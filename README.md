@@ -14,5 +14,7 @@
       <span>1) Clone the repository to your computer</span>
       <br/>
       <span>2) Open a command line in a terminal or IDE and go to the project root</span>
+      <br/>
       <span>3) type the command npm i wait for the installation to complete</span>
+       <br/>
       <span>4) type the command npm start</span>
