@@ -20,6 +20,9 @@ function App() {
             <Route exact render={() => <Head
                 location={location}
                 increase={increase}
+                decrease={decrease}
+                id={id}
+                age={age}
                 setId={setId}
                 setIncrease={setIncrease}
                 setDecrease={setDecrease}

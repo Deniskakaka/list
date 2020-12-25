@@ -84,14 +84,14 @@ export function render(string, element, func, list) {
                         {element.video ? <video 
                                             className='video' 
                                             src={`/src/video/${element.video}.mp4`} 
-                                            controls 
+                                            controls
                                             loop muted='muted'>
                                         </video>
                         : ''}
                     </li>
                 </Fade>
     }
-    if(string.includes('table')) {
+    if(string.includes('table') || string === '/') {
         return  <Fade right key={Math.random()}>
                     <li className='table' key={Math.random()}>
                         <div 

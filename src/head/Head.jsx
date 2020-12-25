@@ -59,49 +59,50 @@ class Head extends React.Component {
             <header className='header'>
                 <div className='header-filter'>
                     <Link
-                        className='header-filter__id'
+                        className={this.props.id ? 'header-filter__id active' : 'header-filter__id'}
                         to={{
                             pathname: `${replaceStringForId(location.pathname)}`,
                             search: this.state.text.split(' ').join(' ')
                         }}
                         onClick={() => this.switchId()}>ID</Link>
                     <Link
-                        className='header-filter__age'
+                        className={this.props.age ? 'header-filter__age active' : 'header-filter__age'}
                         to={{
                             pathname: `${replaceStringForAge(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchAge()}>{this.props.english ? 'AGE' : 'ГОДА'}</Link>
+                        onClick={() => this.switchAge()}>{this.props.english ? 'AGE' : 'года'}</Link>
                 </div>
                 <div className='header-filter'>
                     <Link
-                        className='header-filter__increase'
+                        className={this.props.increase ? 'header-filter__increase active' : 'header-filter__increase'}
                         to={{
                             pathname: `${replaceStringForIncrease(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchIncrease()}>{this.props.english ? 'Increase' : 'ПО ВОЗРОСТАНИЮ'}</Link>
+                        onClick={() => this.switchIncrease()}>{this.props.english ? 'Increase' : 'По возрастанию'}</Link>
                     <Link
-                        className='header-filter__decrease'
+                        className={this.props.decrease ? 'header-filter__decrease active' : 'header-filter__decrease'}
                         to={{
                             pathname: `${replaceStringForDecrease(location.pathname)}`,
                             search: this.state.text
                         }}
-                        onClick={() => this.switchDecrease()}>{this.props.english ? 'Decrease' : 'ПО УМЕНШЕНИЮ'}</Link>
+                        onClick={() => this.switchDecrease()}>{this.props.english ? 'Decrease' : 'По убыванию'}</Link>
                 </div>
                 <div className='header-filter'>
                     <Link
-                        className='header-filter__preview'
+                        className={this.props.location.pathname.includes('preview') ? 'header-filter__preview active' : 'header-filter__preview'}
                         to={{
                             pathname: `${replaceStringForPreview(location.pathname)}`,
                             search: this.state.text
-                        }}>{this.props.english ? 'preview' : 'ПРОСМОТР'}</Link>
+                        }}>{this.props.english ? 'preview' : 'просмотр'}</Link>
                     <Link
-                        className='header-filter__table'
+                        className={this.props.location.pathname.includes('table')
+                            || this.props.location.pathname === '/' ? 'header-filter__table active' : 'header-filter__table'}
                         to={{
                             pathname: `${replaceStringForTable(location.pathname)}`,
                             search: this.state.text
-                        }}>{this.props.english ? 'table' : 'ТАБЛИЦА'}</Link>
+                        }}>{this.props.english ? 'table' : 'таблица'}</Link>
                 </div>
                 <div className='header-filter name'>
                     <input
@@ -113,13 +114,13 @@ class Head extends React.Component {
                         to={{
                             pathname: location.pathname,
                             search: this.state.text
-                        }}>{this.props.english ? 'Search' : 'ПОИСК'}</Link>
+                        }}>{this.props.english ? 'Search' : 'поиск'}</Link>
                 </div>
                 <div className='switch-language'>
                     <input type='checkbox' className='russian' checked={this.props.russian} onChange={() => this.onChangeLanguages()} />
-                    <label>{this.props.english ? 'Russian' : 'РУССКИЙ'}</label>
+                    <label>{this.props.english ? 'Russian' : 'Русский'}</label>
                     <input type='checkbox' className='english' checked={this.props.english} onChange={() => this.onChangeLanguages()} />
-                    <label>{this.props.english ? 'English' : 'АНГЛИЙСКИЙ'}</label>
+                    <label>{this.props.english ? 'English' : 'Английский'}</label>
                 </div>
             </header>
         )
